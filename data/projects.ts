@@ -1,0 +1,48 @@
+export const projects = [
+    {
+      id: 1,
+      title: "Portfolio Website",
+      description: "A modern and minimal portfolio site built with Next.js and Tailwind CSS.",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+      github: "https://github.com/yourusername/portfolio",
+      liveDemo: "https://yourportfolio.com",
+    },
+    {
+      id: 2,
+      title: "Task Manager App",
+      description: "A full-stack task management app with authentication and real-time updates.",
+      image: "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?w=800",
+      technologies: ["React", "Firebase", "Material UI"],
+      github: "https://github.com/yourusername/task-manager",
+      liveDemo: "https://taskmanager.com",
+    },
+    {
+      id: 3,
+      title: "AI Logo Generator",
+      description: "Generate stunning logos with AI-powered image processing.",
+      image: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?w=800",
+      technologies: ["Next.js", "OpenAI API", "Styled Components"],
+      github: "https://github.com/yourusername/logo-generator",
+      liveDemo: "https://aigenlogos.com",
+    },
+    {
+        id: 4,
+        title: "AI Logo Generator",
+        description: "Generate stunning logos with AI-powered image processing.",
+        image: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?w=800",
+        technologies: ["Next.js", "OpenAI API", "Styled Components"],
+        github: "https://github.com/yourusername/logo-generator",
+        liveDemo: "https://aigenlogos.com",
+      },
+      {
+        id: 5,
+        title: "AI Logo Generator",
+        description: "Generate stunning logos with AI-powered image processing.",
+        image: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?w=800",
+        technologies: ["Next.js", "OpenAI API", "Styled Components"],
+        github: "https://github.com/yourusername/logo-generator",
+        liveDemo: "https://aigenlogos.com",
+      },
+  ];
+  
