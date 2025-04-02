@@ -24,7 +24,7 @@ export default function FloatingImages() {
   }, []);
 
   return (
-    <div className="fixed bottom-8 right-8 z-50 w-52 h-52">
+    <div className="fixed bottom-0 -right-4 md:right-4 z-50 w-52 h-52">
       <img
         src="/memoji1.png"
         alt="Floating image 1"
