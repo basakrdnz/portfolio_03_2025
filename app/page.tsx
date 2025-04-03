@@ -19,12 +19,6 @@ import { projects } from "@/data/projects";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Autoplay } from "swiper/modules";
-import type { AutoplayOptions } from "swiper/types";
-
-const autoplayOptions: AutoplayOptions = {
-  delay: 3000,
-  disableOnInteraction: false,
-};
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -104,8 +98,12 @@ export default function Home() {
 
           <div className="flex gap-4 items-center">
             {[
+              // sosyal ikonlar
               { href: "https://github.com/basakrdnz", Icon: Github },
-              { href: "https://www.linkedin.com/in/basakkaradeniz/", Icon: Linkedin },
+              {
+                href: "https://www.linkedin.com/in/basakkaradeniz/",
+                Icon: Linkedin,
+              },
               { href: "https://medium.com/@basak.karadeniz0", Icon: BookOpen },
               { href: "mailto:basak.karadeniz0@gmail.com", Icon: Mail },
               { href: "#projects", Icon: Terminal },
@@ -126,7 +124,11 @@ export default function Home() {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="p-2 rounded-full hover:bg-muted transition-colors"
               >
-                {theme === "dark" ? <Sun className="size-6" /> : <Moon className="size-6" />}
+                {theme === "dark" ? (
+                  <Sun className="size-6" />
+                ) : (
+                  <Moon className="size-6" />
+                )}
               </button>
             )}
           </div>
@@ -155,7 +157,8 @@ export default function Home() {
               Experimental Developer
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Crafting digital experiences by exploring and blending creativity with technical skills.
+              Crafting digital experiences by exploring and blending creativity
+              with technical skills.
             </p>
           </motion.div>
 
@@ -181,11 +184,21 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold mb-8">About Me</h2>
             <p className="text-xl text-muted-foreground mb-6">
-              I'm a front-end developer based in Ankara, recently graduated but deeply committed to continuous learning and experimentation. I believe that in today’s world, lack of knowledge isn’t the issue — it's the unwillingness to grow.
-              <br /><br />
-              I thrive on exploring new technologies, turning ideas into elegant, accessible interfaces, and adapting quickly to unfamiliar challenges. What I may not know today, I’m confident I can learn — and apply — tomorrow.
-              <br /><br />
-              Currently, I’m expanding my skill set towards full-stack development, aiming to build seamless, end-to-end digital experiences that combine function with creativity.
+              I'm a front-end developer based in Ankara, recently graduated but
+              deeply committed to continuous learning and experimentation. I
+              believe that in today’s world, lack of knowledge isn’t the issue —
+              it's the unwillingness to grow.
+              <br />
+              <br />
+              I thrive on exploring new technologies, turning ideas into
+              elegant, accessible interfaces, and adapting quickly to unfamiliar
+              challenges. What I may not know today, I’m confident I can learn —
+              and apply — tomorrow.
+              <br />
+              <br />
+              Currently, I’m expanding my skill set towards full-stack
+              development, aiming to build seamless, end-to-end digital
+              experiences that combine function with creativity.
             </p>
           </motion.div>
         </div>
@@ -193,7 +206,9 @@ export default function Home() {
 
       {/* skills */}
       <section className="py-20 bg-secondary">
-        <Skills />
+        <div className="container mx-auto px-4">
+          <Skills />
+        </div>
       </section>
 
       {/* projects */}
@@ -207,7 +222,7 @@ export default function Home() {
             slidesPerView={1.8}
             spaceBetween={50}
             centeredSlides={true}
-            autoplay={autoplayOptions}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
             grabCursor={true}
             loop={true}
             modules={[Autoplay]}
@@ -272,7 +287,9 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
           <p className="text-lg mb-8 text-muted-foreground">
-            I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            I'm currently looking for new opportunities. Whether you have a
+            question or just want to say hi, I'll try my best to get back to
+            you!
           </p>
           <a
             href="mailto:basak.karadeniz0@gmail.com"
