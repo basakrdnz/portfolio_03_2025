@@ -97,11 +97,15 @@ export default function Home() {
           </a>
 
           <div className="flex gap-4 items-center">
-            {[ // sosyal ikonlar
-              { href: "https://github.com/yourusername", Icon: Github },
-              { href: "https://linkedin.com/in/yourusername", Icon: Linkedin },
-              { href: "https://medium.com/@yourusername", Icon: BookOpen },
-              { href: "mailto:your@email.com", Icon: Mail },
+            {[
+              // sosyal ikonlar
+              { href: "https://github.com/basakrdnz", Icon: Github },
+              {
+                href: "https://www.linkedin.com/in/basakkaradeniz/",
+                Icon: Linkedin,
+              },
+              { href: "https://medium.com/@basak.karadeniz0", Icon: BookOpen },
+              { href: "mailto:basak.karadeniz0@gmail.com", Icon: Mail },
               { href: "#projects", Icon: Terminal },
             ].map(({ href, Icon }, i) => (
               <a
@@ -120,7 +124,11 @@ export default function Home() {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="p-2 rounded-full hover:bg-muted transition-colors"
               >
-                {theme === "dark" ? <Sun className="size-6" /> : <Moon className="size-6" />}
+                {theme === "dark" ? (
+                  <Sun className="size-6" />
+                ) : (
+                  <Moon className="size-6" />
+                )}
               </button>
             )}
           </div>
@@ -149,7 +157,8 @@ export default function Home() {
               Experimental Developer
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Crafting digital experiences by exploring and blending creativity with technical skills.
+              Crafting digital experiences by exploring and blending creativity
+              with technical skills.
             </p>
           </motion.div>
 
@@ -175,11 +184,21 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold mb-8">About Me</h2>
             <p className="text-xl text-muted-foreground mb-6">
-              I'm a front-end developer based in Ankara, recently graduated but deeply committed to continuous learning and experimentation. I believe that in today’s world, lack of knowledge isn’t the issue — it's the unwillingness to grow.
-              <br /><br />
-              I thrive on exploring new technologies, turning ideas into elegant, accessible interfaces, and adapting quickly to unfamiliar challenges. What I may not know today, I’m confident I can learn — and apply — tomorrow.
-              <br /><br />
-              Currently, I’m expanding my skill set towards full-stack development, aiming to build seamless, end-to-end digital experiences that combine function with creativity.
+              I'm a front-end developer based in Ankara, recently graduated but
+              deeply committed to continuous learning and experimentation. I
+              believe that in today’s world, lack of knowledge isn’t the issue —
+              it's the unwillingness to grow.
+              <br />
+              <br />
+              I thrive on exploring new technologies, turning ideas into
+              elegant, accessible interfaces, and adapting quickly to unfamiliar
+              challenges. What I may not know today, I’m confident I can learn —
+              and apply — tomorrow.
+              <br />
+              <br />
+              Currently, I’m expanding my skill set towards full-stack
+              development, aiming to build seamless, end-to-end digital
+              experiences that combine function with creativity.
             </p>
           </motion.div>
         </div>
@@ -203,7 +222,9 @@ export default function Home() {
       {/* projects */}
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-accent">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center">
+            Featured Projects
+          </h2>
 
           <Swiper
             slidesPerView={1.8}
@@ -218,16 +239,23 @@ export default function Home() {
             {projects.map((project) => (
               <SwiperSlide key={project.id}>
                 <div className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="relative w-full h-64 group sm:h-72 md:h-80 lg:h-[22rem] xl:h-[24rem]">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+                    />
+                    <img
+                      src={project.hoverImage}
+                      alt={`${project.title} hover`}
+                      className="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    />
+                  </div>
+
                   <div className="p-6">
                     <h3 className="font-bold text-xl mb-2">{project.title}</h3>
-                    <p className="text-muted-foreground mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech, index) => (
+                      {project.techStack.map((tech, index) => (
                         <span
                           key={index}
                           className="px-3 py-1 bg-accent rounded-full text-sm"
@@ -238,7 +266,7 @@ export default function Home() {
                     </div>
                     <div className="flex gap-4">
                       <a
-                        href={project.github}
+                        href={project.codeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline"
@@ -246,7 +274,7 @@ export default function Home() {
                         GitHub
                       </a>
                       <a
-                        href={project.liveDemo}
+                        href={project.projectUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline"
@@ -272,10 +300,10 @@ export default function Home() {
             you!
           </p>
           <a
-            href="mailto:your.email@example.com"
+            href="mailto:basak.karadeniz0@gmail.com"
             className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
           >
-            Say Hello
+            Say Hello!
           </a>
         </div>
       </section>
