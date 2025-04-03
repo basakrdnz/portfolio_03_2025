@@ -54,10 +54,11 @@ export const projects = [
     codeUrl: "https://github.com/basakrdnz/Ticket-Form-Page"
   },
   {
+    id: 7,
     title: "TIME TRACKER WITH VUE",
     techStack: ["HTML", "CSS", "VUE"],
-    imageUrl: "\images\projects\time_track_img_1.png",
-    hoverImageUrl: "/images/projects/time_track_img_2.png",
+    image: "/images/projects/time_track_img_1.png",
+    hoverImage: "/images/projects/time_track_img_2.png",
     projectUrl: "https://basakrdnz.github.io/time_tracker_vue/",
     codeUrl: "https://github.com/basakrdnz/time_tracker_vue"
   },
