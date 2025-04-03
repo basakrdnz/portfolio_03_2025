@@ -5,7 +5,7 @@ export const projects = [
     techStack: ["HTML", "CSS", "JAVASCRIPT"],
     image: "/images/projects/productlist_img_1.png",
     hoverImage: "/images/projects/productlist_img_3.png",
-    projectUrl: "#",
+    projectUrl: "https://product-list-react-cyan.vercel.app",
     codeUrl: "https://github.com/basakrdnz/product_list_react"
   },
   {
@@ -14,7 +14,7 @@ export const projects = [
     techStack: ["HTML", "CSS"],
     image: "/images/projects/linkedin_nextjs_img_1.png",
     hoverImage: "/images/projects/linkedin_nextjs_img_3.png",
-    projectUrl: "#",
+    projectUrl: "https://linkedin-profile-page-next.vercel.app",
     codeUrl: "https://github.com/basakrdnz/linkedin_profile_page_next"
   },
   {
@@ -23,7 +23,7 @@ export const projects = [
     techStack: ["HTML", "CSS"],
     image: "/images/projects/nexttravel_img_1.png",
     hoverImage: "/images/projects/nexttravel_img_2.png",
-    projectUrl: "#",
+    projectUrl: "https://next-travel-example-web-page.vercel.app",
     codeUrl: "https://github.com/basakrdnz/Next-Travel-Example-Web-Page"
   },
   {
@@ -41,7 +41,7 @@ export const projects = [
     techStack: ["HTML", "CSS"],
     image: "/images/projects/sasshomepage_img_1.png",
     hoverImage: "/images/projects/sasshomepage_img_2.png",
-    projectUrl: "#",
+    projectUrl: "https://saas-website-home-page.vercel.app",
     codeUrl: "https://github.com/basakrdnz/Saas-Website-Home-Page"
   },
   {
@@ -50,7 +50,7 @@ export const projects = [
     techStack: ["HTML", "CSS", "JAVASCRIPT"],
     image: "/images/projects/ticketformpage_img_1.png",
     hoverImage: "/images/projects/ticketprompage_img_2.png",
-    projectUrl: "#",
+    projectUrl: "https://ticket-form-page.vercel.app",
     codeUrl: "https://github.com/basakrdnz/Ticket-Form-Page"
   },
   {
@@ -59,7 +59,7 @@ export const projects = [
     techStack: ["HTML", "CSS", "VUE"],
     image: "/images/projects/time_track_img_1.png",
     hoverImage: "/images/projects/time_track_img_2.png",
-    projectUrl: "https://basakrdnz.github.io/time_tracker_vue/",
+    projectUrl: "https://time-tracker-vue-one.vercel.app",
     codeUrl: "https://github.com/basakrdnz/time_tracker_vue"
   },
 ];

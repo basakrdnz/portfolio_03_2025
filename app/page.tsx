@@ -206,17 +206,7 @@ export default function Home() {
 
       {/* skills */}
       <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold mb-16 text-center"
-          >
-            Skills
-          </motion.h2>
           <Skills />
-        </div>
       </section>
 
       {/* projects */}
