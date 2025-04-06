@@ -10,6 +10,8 @@ import {
   Sun,
   Terminal,
   BookOpen,
+  X,
+  Menu,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
@@ -19,6 +21,7 @@ import { projects } from "@/data/projects";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Autoplay, Pagination } from "swiper/modules";
+import { navLinks } from "@/data/navLinks";
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -41,6 +44,8 @@ export default function Home() {
     window.addEventListener("mousemove", mouseMove);
     return () => window.removeEventListener("mousemove", mouseMove);
   }, []);
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const variants = {
     default: {
@@ -96,18 +101,9 @@ export default function Home() {
             basak.dev
           </a>
 
-          <div className="flex gap-4 items-center">
-            {[
-              // sosyal ikonlar
-              { href: "https://github.com/basakrdnz", Icon: Github },
-              {
-                href: "https://www.linkedin.com/in/basakkaradeniz/",
-                Icon: Linkedin,
-              },
-              { href: "https://medium.com/@basak.karadeniz0", Icon: BookOpen },
-              { href: "mailto:basak.karadeniz0@gmail.com", Icon: Mail },
-              { href: "#projects", Icon: Terminal },
-            ].map(({ href, Icon }, i) => (
+          {/* Desktop */}
+          <div className="hidden md:flex gap-4 items-center">
+            {navLinks.map(({ href, Icon }, i) => (
               <a
                 key={i}
                 href={href}
@@ -132,7 +128,39 @@ export default function Home() {
               </button>
             )}
           </div>
+
+          {/* Mobile Hamburger */}
+          <button
+            className="md:hidden p-2 rounded hover:bg-muted transition-colors"
+            onClick={() => setMenuOpen(true)}
+          >
+            <Menu className="size-6" />
+          </button>
         </div>
+
+        {/* Mobile Drawer */}
+        {menuOpen && (
+          <div className="fixed top-0 right-0 w-48 h-full bg-background shadow-lg p-6 flex flex-col gap-4 items-end md:hidden z-50">
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="mb-4 p-2 rounded-full hover:bg-muted"
+            >
+              <X className="size-6" />
+            </button>
+
+            {navLinks.map(({ href, Icon }, i) => (
+              <a
+                key={i}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : "_self"}
+                rel="noopener noreferrer"
+                className="p-2 rounded-full hover:bg-muted transition-colors"
+              >
+                <Icon className="size-6" />
+              </a>
+            ))}
+          </div>
+        )}
       </nav>
 
       {/* hero */}
@@ -225,10 +253,10 @@ export default function Home() {
             grabCursor={true}
             loop={true}
             pagination={{
-              el: '.custom-pagination',
+              el: ".custom-pagination",
               clickable: true,
-              bulletClass: 'custom-line',
-              bulletActiveClass: 'custom-line-active'
+              bulletClass: "custom-line",
+              bulletActiveClass: "custom-line-active",
             }}
             modules={[Autoplay, Pagination]}
             className="w-full mySwiper"
@@ -237,7 +265,7 @@ export default function Home() {
               640: { slidesPerView: 1.2 },
               768: { slidesPerView: 1.5 },
               1024: { slidesPerView: 1.8 },
-              1280: { slidesPerView: 2.2 }
+              1280: { slidesPerView: 2.2 },
             }}
           >
             {projects.map((project) => (
