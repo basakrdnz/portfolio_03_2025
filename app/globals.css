@@ -90,3 +90,12 @@
 a, button, input, textarea {
   cursor: none !important;
 }
+
+.custom-line {
+  @apply w-6 h-[2px] bg-gray-300 inline-block mx-1 rounded transition-all;
+}
+
+.custom-line-active {
+  @apply bg-primary opacity-90 scale-110;
+}
+

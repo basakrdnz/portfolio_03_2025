@@ -18,7 +18,7 @@ import FloatingImages from "@/components/FloatingImages";
 import { projects } from "@/data/projects";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -219,14 +219,26 @@ export default function Home() {
           </h2>
 
           <Swiper
-            slidesPerView={1.8}
-            spaceBetween={50}
+            spaceBetween={20}
             centeredSlides={true}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             grabCursor={true}
             loop={true}
-            modules={[Autoplay]}
-            className="mySwiper"
+            pagination={{
+              el: '.custom-pagination',
+              clickable: true,
+              bulletClass: 'custom-line',
+              bulletActiveClass: 'custom-line-active'
+            }}
+            modules={[Autoplay, Pagination]}
+            className="w-full mySwiper"
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              640: { slidesPerView: 1.2 },
+              768: { slidesPerView: 1.5 },
+              1024: { slidesPerView: 1.8 },
+              1280: { slidesPerView: 2.2 }
+            }}
           >
             {projects.map((project) => (
               <SwiperSlide key={project.id}>
@@ -279,6 +291,7 @@ export default function Home() {
               </SwiperSlide>
             ))}
           </Swiper>
+          <div className="custom-pagination flex justify-center mt-8" />
         </div>
       </section>
 
