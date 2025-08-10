@@ -213,7 +213,9 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="group relative"
                 >
-                  <div className="bg-card/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-border">
+                  <div className="bg-card/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-border h-full flex flex-col">
+                   
+
                     {/* Project Image */}
                     <div className="relative h-64 overflow-hidden">
                       <img
@@ -222,7 +224,7 @@ export default function Home() {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      
+
                       {/* Hover Overlay with Links */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="flex gap-4">
@@ -247,8 +249,8 @@ export default function Home() {
                     </div>
 
                     {/* Project Content */}
-                    <div className="p-8">
-                      <div className="mb-4">
+                    <div className="p-8 flex-1 flex flex-col">
+                      <div className="mb-4 flex-1">
                         <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                           {project.title}
                         </h3>
@@ -259,25 +261,8 @@ export default function Home() {
                         )}
                       </div>
 
-                      {/* Tech Stack */}
-                      <div className="mb-6">
-                        <h4 className="text-sm font-semibold text-foreground/70 mb-3 uppercase tracking-wide">
-                          Technologies Used
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.techStack.map((tech, techIndex) => (
-                            <span
-                              key={techIndex}
-                              className="px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium border border-primary/20"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
                       {/* Project Stats */}
-                      <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                      <div className="flex items-center justify-between pt-4 border-t border-border/50 mt-auto">
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                           <span>Active Project</span>
@@ -302,6 +287,33 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
+                                           {/* Tech Stack Strip */}
+                                           {project.techStack && project.techStack.length > 0 && (
+                      <div className="relative h-5 bg-gradient-to-r from-black to-purple-500 overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-between px-4">
+                          <div className="flex animate-scroll-left group-hover:animate-scroll-left-paused">
+                            {project.techStack.map((tech, techIndex) => (
+                              <span
+                                key={techIndex}
+                                className="px-4 py-1 text-white text-sm font-medium whitespace-nowrap"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="flex animate-scroll-left group-hover:animate-scroll-left-paused" style={{ animationDelay: '5s' }}>
+                            {project.techStack.map((tech, techIndex) => (
+                              <span
+                                key={`duplicate-${techIndex}`}
+                                className="px-4 py-1 text-white text-sm font-medium whitespace-nowrap"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -386,7 +398,7 @@ export default function Home() {
                       {project.techStack.map((tech, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-accent rounded-full text-sm"
+                          className="px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium border border-primary/20 hover:bg-primary/20 transition-colors"
                         >
                           {tech}
                         </span>

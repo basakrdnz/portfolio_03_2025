@@ -79,7 +79,7 @@ export const realWorldProjects = [
     id: 2,
     title: "NOVA ESKRIM WEBSITE",
     techStack: ["REACT", "JAVASCRIPT", "VITE", "TAILWIND CSS"],
-    image: "/images/projects/nova_web_img_1.png",
+    image: "/images/projects/nova_web_img_2.png",
     hoverImage: "/images/projects/nova_web_img_2.png",
     projectUrl: "https://nova-eskrim-react.vercel.app",
     codeUrl: "https://github.com/basakrdnz/nova_eskrim_react",
