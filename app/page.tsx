@@ -17,15 +17,13 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Skills from "@/components/Skills";
 import FloatingImages from "@/components/FloatingImages";
-import { projects } from "@/data/projects";
+import { exerciseProjects, realWorldProjects } from "@/data/projects";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Autoplay, Pagination } from "swiper/modules";
 import { navLinks } from "@/data/navLinks";
 
 export default function Home() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorVariant, setCursorVariant] = useState("default");
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -33,61 +31,11 @@ export default function Home() {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    const mouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
-    };
-
-    window.addEventListener("mousemove", mouseMove);
-    return () => window.removeEventListener("mousemove", mouseMove);
-  }, []);
-
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const variants = {
-    default: {
-      x: mousePosition.x - 16,
-      y: mousePosition.y - 16,
-      transition: {
-        type: "spring",
-        mass: 0.6,
-      },
-    },
-    text: {
-      x: mousePosition.x - 75,
-      y: mousePosition.y - 75,
-      height: 150,
-      width: 150,
-      backgroundColor: "var(--cursor-color)",
-      mixBlendMode: "difference" as const,
-      transition: {
-        type: "spring",
-        mass: 0.6,
-      },
-    },
-  };
 
   return (
     <main className="min-h-screen bg-background text-foreground overflow-hidden">
-      {/* custom cursor */}
-      <motion.div
-        className="cursor"
-        variants={variants}
-        animate={cursorVariant}
-        style={{
-          position: "fixed",
-          zIndex: 50,
-          pointerEvents: "none",
-          height: 32,
-          width: 32,
-          backgroundColor: "white",
-          borderRadius: "50%",
-          mixBlendMode: "difference",
-        }}
-      />
+
 
       <FloatingImages />
 
@@ -185,8 +133,7 @@ export default function Home() {
               Experimental Developer
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Crafting digital experiences by exploring and blending creativity
-              with technical skills.
+              Front-end developer passionate about creating beautiful and functional web experiences.
             </p>
           </motion.div>
 
@@ -239,12 +186,161 @@ export default function Home() {
         </div>
       </section>
 
-      {/* projects */}
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-accent">
+      {/* real world projects */}
+      <section id="real-world-projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-accent">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">
-            Featured Projects
-          </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl font-bold mb-4">Real World Projects</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Complex applications that solve real-world problems with advanced features and integrations
+            </p>
+          </motion.div>
+
+          {realWorldProjects.length > 0 ? (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {realWorldProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group relative"
+                >
+                  <div className="bg-card/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-border">
+                    {/* Project Image */}
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      
+                      {/* Hover Overlay with Links */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="flex gap-4">
+                          <a
+                            href={project.projectUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium hover:bg-white/30 transition-colors border border-white/30"
+                          >
+                            Live Demo
+                          </a>
+                          <a
+                            href={project.codeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium hover:bg-white/30 transition-colors border border-white/30"
+                          >
+                            View Code
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Project Content */}
+                    <div className="p-8">
+                      <div className="mb-4">
+                        <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                          {project.title}
+                        </h3>
+                        {project.description && (
+                          <p className="text-muted-foreground leading-relaxed">
+                            {project.description}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Tech Stack */}
+                      <div className="mb-6">
+                        <h4 className="text-sm font-semibold text-foreground/70 mb-3 uppercase tracking-wide">
+                          Technologies Used
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.techStack.map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className="px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium border border-primary/20"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Project Stats */}
+                      <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                          <span>Active Project</span>
+                        </div>
+                        <div className="flex gap-3">
+                          <a
+                            href={project.projectUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors text-sm font-medium"
+                          >
+                            Demo →
+                          </a>
+                          <a
+                            href={project.codeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors text-sm font-medium"
+                          >
+                            Code →
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center py-16"
+            >
+              <div className="max-w-md mx-auto">
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🚀</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">More Projects Coming Soon</h3>
+                <p className="text-muted-foreground">
+                  I'm working on some exciting real-world applications. Stay tuned!
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      {/* exercise projects */}
+      <section id="exercise-projects" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-4">Exercise Projects</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Learning-focused projects that demonstrate fundamental concepts and skills
+            </p>
+          </motion.div>
 
           <Swiper
             spaceBetween={20}
@@ -253,7 +349,7 @@ export default function Home() {
             grabCursor={true}
             loop={true}
             pagination={{
-              el: ".custom-pagination",
+              el: ".exercise-pagination",
               clickable: true,
               bulletClass: "custom-line",
               bulletActiveClass: "custom-line-active",
@@ -268,7 +364,7 @@ export default function Home() {
               1280: { slidesPerView: 2.2 },
             }}
           >
-            {projects.map((project) => (
+            {exerciseProjects.map((project) => (
               <SwiperSlide key={project.id}>
                 <div className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                   <div className="relative w-full h-64 group sm:h-72 md:h-80 lg:h-[22rem] xl:h-[24rem]">
@@ -319,7 +415,7 @@ export default function Home() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="custom-pagination flex justify-center mt-8" />
+          <div className="exercise-pagination flex justify-center mt-8" />
         </div>
       </section>
 

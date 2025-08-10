@@ -1,4 +1,4 @@
-export const projects = [
+export const exerciseProjects = [
   {
     id: 1,
     title: "REACT PRODUCT LIST",
@@ -63,3 +63,31 @@ export const projects = [
     codeUrl: "https://github.com/basakrdnz/time_tracker_vue"
   },
 ];
+
+export const realWorldProjects = [
+  {
+    id: 1,
+    title: "NEXT.JS RICK & MORTY API PAGE",
+    techStack: ["HTML", "CSS", "JAVASCRIPT", "API", "NEXT.JS"],
+    image: "/images/projects/rickmorty_img_2.png",
+    hoverImage: "/images/projects/rickmorty_img_1.png",
+    projectUrl: "https://rick-morty-next-api-page.vercel.app",
+    codeUrl: "https://github.com/basakrdnz/RickMorty_Next_Api_Page?tab=readme-ov-file",
+    description: "A dynamic web application that integrates with the Rick & Morty API to display character information, featuring search functionality, pagination, and responsive design."
+  },
+  {
+    id: 2,
+    title: "NEXT.JS RICK & MORTY API PAGE",
+    techStack: ["HTML", "CSS", "JAVASCRIPT", "API", "NEXT.JS"],
+    image: "/images/projects/rickmorty_img_2.png",
+    hoverImage: "/images/projects/rickmorty_img_1.png",
+    projectUrl: "https://rick-morty-next-api-page.vercel.app",
+    codeUrl: "https://github.com/basakrdnz/RickMorty_Next_Api_Page?tab=readme-ov-file",
+    description: "A dynamic web application that integrates with the Rick & Morty API to display character information, featuring search functionality, pagination, and responsive design."
+  },
+  // Buraya gelecekte daha karmaşık projeler eklenebilir
+  // Örnek: E-commerce sitesi, blog platformu, dashboard, vb.
+];
+
+// Geriye uyumluluk için eski projects array'ini de tutuyoruz
+export const projects = [...exerciseProjects, ...realWorldProjects];

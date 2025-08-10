@@ -71,25 +71,12 @@
   }
   body {
     @apply bg-background text-foreground;
-    cursor: none;
   }
 }
 
-.cursor {
-  background-color: white;
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
 
-/* Disable cursor expansion on interactive elements */
-a, button, input, textarea {
-  cursor: none !important;
-}
+
+
 
 .custom-line {
   @apply w-6 h-[2px] bg-gray-300 inline-block mx-1 rounded transition-all;
