@@ -69,7 +69,7 @@ export const realWorldProjects = [
     id: 1,
     title: "CRUMBLE KAFE WEBSITE",
     techStack: ["REACT", "TYPESCRIPT", "VITE", "TAILWIND CSS"],
-    image: "/images/projects/crumble_web_img.png",
+    image: "/images/projects/crumbleweb_img.png",
     hoverImage: "/images/projects/crumble_web_img.png",
     projectUrl: "https://www.crumbleofficial.com",
     codeUrl: "https://github.com/basakrdnz/crumble_web_react",
