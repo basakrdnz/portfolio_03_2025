@@ -197,7 +197,8 @@ export default function Home() {
           >
             <h2 className="text-3xl font-bold mb-4">Real World Projects</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Complex applications that solve real-world problems with advanced features and integrations
+              A collection of my real-world applications, showcasing my skills in
+              building functional and visually appealing web solutions.
             </p>
           </motion.div>
 
