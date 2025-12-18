@@ -1,130 +1,199 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiVuedotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiLaravel,
+  SiTailwindcss,
+  SiSass,
+  SiBootstrap,
+  SiVite,
+  SiVercel,
+  SiFirebase,
+  SiMongodb,
+  SiPostgresql,
+  SiMysql,
+  SiPrisma,
+  SiSupabase,
+  SiGit,
+  SiGithub,
+  SiFigma,
+  SiAdobe,
+  SiCanva,
+  SiWordpress,
+  SiJquery,
+  SiReactrouter,
+  SiDotnet,
+  SiSelenium,
+  SiChartdotjs,
+} from "react-icons/si";
+import { FaNpm } from "react-icons/fa";
 
-import { FaPhp, FaLaravel, FaDatabase, FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs, FaBootstrap } from "react-icons/fa";
-import { SiTailwindcss, SiTypescript, SiNextdotjs, SiSass } from "react-icons/si";
+interface TechBadge {
+  name: string;
+  icon: React.ReactNode;
+  color: string;
+  category: string;
+}
 
-const skillGroups = [
-  {
-    category: "Backend",
-    description: "Server-side technologies and databases",
-    color: "from-red-500 to-orange-500",
-    skills: [
-      { name: "PHP", level: 20, icon: <FaPhp className="text-blue-700 dark:text-blue-300" /> },
-      { name: "Laravel", level: 35, icon: <FaLaravel className="text-red-600 dark:text-red-400" /> },
-      { name: "MySQL", level: 45, icon: <FaDatabase className="text-emerald-600 dark:text-emerald-400" /> },
-      { name: "API Development", level: 35, icon: <span className='text-sm'>🛠️</span> },
-      { name: "Microsoft SQL Server", level: 45, icon: <span className='text-sm'>🗄️</span> },
-    ],
-  },
-  {
-    category: "Frontend",
-    description: "Client-side technologies and frameworks",
-    color: "from-blue-500 to-cyan-500",
-    skills: [
-      { name: "HTML", level: 95, icon: <FaHtml5 className="text-orange-600 dark:text-orange-300" /> },
-      { name: "CSS", level: 90, icon: <FaCss3Alt className="text-blue-600 dark:text-blue-300" /> },
-      { name: "JavaScript", level: 75, icon: <FaJs className="text-yellow-500 dark:text-yellow-300" /> },
-      { name: "TypeScript", level: 65, icon: <SiTypescript className="text-blue-500 dark:text-blue-300" /> },
-      { name: "React", level: 80, icon: <FaReact className="text-cyan-500 dark:text-cyan-300" /> },
-      { name: "Vue.js", level: 30, icon: <FaVuejs className="text-green-500 dark:text-green-300" /> },
-      { name: "Next.js", level: 80, icon: <SiNextdotjs className="text-neutral-800 dark:text-white" /> },
-      { name: "Shadcn", level: 70, icon: <span className='text-sm'>🧩</span> },
-      { name: "JQuery", level: 50, icon: <span className='text-sm'>📜</span> },
-    ],
-  },
-  {
-    category: "Styling",
-    description: "Design systems and styling frameworks",
-    color: "from-purple-500 to-pink-500",
-    skills: [
-      { name: "Tailwind CSS", level: 90, icon: <SiTailwindcss className="text-sky-400 dark:text-sky-300" /> },
-      { name: "SASS", level: 50, icon: <SiSass className="text-pink-500 dark:text-pink-300" /> },
-      { name: "Bootstrap", level: 20, icon: <FaBootstrap className="text-purple-600 dark:text-purple-300" /> },
-    ],
-  },
+const techStack: TechBadge[] = [
+  // Frontend Core
+  { name: "JAVASCRIPT", icon: <SiJavascript />, color: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20", category: "Frontend" },
+  { name: "TYPESCRIPT", icon: <SiTypescript />, color: "bg-blue-600/10 text-blue-600 border-blue-600/20", category: "Frontend" },
+  
+  // Frontend Frameworks
+  { name: "REACT", icon: <SiReact />, color: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20", category: "Frontend" },
+  { name: "REACT ROUTER", icon: <SiReactrouter />, color: "bg-red-500/10 text-red-500 border-red-500/20", category: "Frontend" },
+  { name: "NEXT.JS", icon: <SiNextdotjs />, color: "bg-neutral-800/10 text-neutral-800 dark:text-neutral-200 border-neutral-800/20 dark:border-neutral-200/20", category: "Frontend" },
+  { name: "VUE.JS", icon: <SiVuedotjs />, color: "bg-green-500/10 text-green-500 border-green-500/20", category: "Frontend" },
+  { name: "VITE", icon: <SiVite />, color: "bg-purple-500/10 text-purple-500 border-purple-500/20", category: "Frontend" },
+  
+  // Styling
+  { name: "TAILWIND CSS", icon: <SiTailwindcss />, color: "bg-sky-500/10 text-sky-500 border-sky-500/20", category: "Styling" },
+  { name: "SASS", icon: <SiSass />, color: "bg-pink-500/10 text-pink-500 border-pink-500/20", category: "Styling" },
+  { name: "BOOTSTRAP", icon: <SiBootstrap />, color: "bg-purple-600/10 text-purple-600 border-purple-600/20", category: "Styling" },
+  
+  // Backend
+  { name: "NODE.JS", icon: <SiNodedotjs />, color: "bg-green-600/10 text-green-600 border-green-600/20", category: "Backend" },
+  { name: "EXPRESS.JS", icon: <SiExpress />, color: "bg-neutral-700/10 text-neutral-700 dark:text-neutral-300 border-neutral-700/20", category: "Backend" },
+  { name: "LARAVEL", icon: <SiLaravel />, color: "bg-red-600/10 text-red-600 border-red-600/20", category: "Backend" },
+  { name: ".NET", icon: <SiDotnet />, color: "bg-purple-700/10 text-purple-700 border-purple-700/20", category: "Backend" },
+  
+  // Databases
+  { name: "MYSQL", icon: <SiMysql />, color: "bg-blue-600/10 text-blue-600 border-blue-600/20", category: "Database" },
+  { name: "POSTGRES", icon: <SiPostgresql />, color: "bg-blue-500/10 text-blue-500 border-blue-500/20", category: "Database" },
+  { name: "MONGODB", icon: <SiMongodb />, color: "bg-green-500/10 text-green-500 border-green-500/20", category: "Database" },
+  { name: "PRISMA", icon: <SiPrisma />, color: "bg-blue-500/10 text-blue-500 border-blue-500/20", category: "Database" },
+  { name: "SUPABASE", icon: <SiSupabase />, color: "bg-green-500/10 text-green-500 border-green-500/20", category: "Database" },
+  { name: "SQLITE", icon: <span className="text-lg">🗄️</span>, color: "bg-teal-600/10 text-teal-600 border-teal-600/20", category: "Database" },
+  { name: "MICROSOFT SQL SERVER", icon: <span className="text-lg">🗄️</span>, color: "bg-red-600/10 text-red-600 border-red-600/20", category: "Database" },
+  
+  // Tools & Services
+  { name: "VERCEL", icon: <SiVercel />, color: "bg-neutral-900/10 text-neutral-900 dark:text-neutral-100 border-neutral-900/20 dark:border-neutral-100/20", category: "Tools" },
+  { name: "FIREBASE", icon: <SiFirebase />, color: "bg-orange-500/10 text-orange-500 border-orange-500/20", category: "Tools" },
+  { name: "NPM", icon: <FaNpm />, color: "bg-red-600/10 text-red-600 border-red-600/20", category: "Tools" },
+  { name: "CHART.JS", icon: <SiChartdotjs />, color: "bg-pink-500/10 text-pink-500 border-pink-500/20", category: "Tools" },
+  { name: "WORDPRESS", icon: <SiWordpress />, color: "bg-blue-500/10 text-blue-500 border-blue-500/20", category: "Tools" },
+  { name: "JQUERY", icon: <SiJquery />, color: "bg-blue-600/10 text-blue-600 border-blue-600/20", category: "Tools" },
+  
+  // Design
+  { name: "FIGMA", icon: <SiFigma />, color: "bg-orange-500/10 text-orange-500 border-orange-500/20", category: "Design" },
+  { name: "ADOBE", icon: <SiAdobe />, color: "bg-red-600/10 text-red-600 border-red-600/20", category: "Design" },
+  { name: "CANVA", icon: <SiCanva />, color: "bg-teal-500/10 text-teal-500 border-teal-500/20", category: "Design" },
+  { name: "FRAMER", icon: <span className="text-lg font-bold">F</span>, color: "bg-neutral-900/10 text-neutral-900 dark:text-neutral-100 border-neutral-900/20 dark:border-neutral-100/20", category: "Design" },
+  
+  // Version Control
+  { name: "GITHUB", icon: <SiGithub />, color: "bg-neutral-900/10 text-neutral-900 dark:text-neutral-100 border-neutral-900/20 dark:border-neutral-100/20", category: "Version Control" },
+  { name: "GIT", icon: <SiGit />, color: "bg-red-600/10 text-red-600 border-red-600/20", category: "Version Control" },
+  
+  // Testing
+  { name: "SELENIUM", icon: <SiSelenium />, color: "bg-green-600/10 text-green-600 border-green-600/20", category: "Testing" },
 ];
 
-const SkillBar = ({ name, level, icon }: { name: string; level: number; icon?: React.ReactNode }) => {
-  return (
-    <div className="w-full mb-6">
-      <div className="flex justify-between items-center mb-3">
-        <div className="flex items-center gap-3">
-          {icon && <span className="text-lg">{icon}</span>}
-          <span className="text-sm font-medium text-foreground/90">{name}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-16 h-2 bg-muted rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-primary to-purple-600 rounded-full"
-              initial={{ width: 0 }}
-              whileInView={{ width: `${level}%` }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-            />
-          </div>
-          <span className="text-xs font-bold text-foreground/60 min-w-[2rem]">{level}%</span>
-        </div>
-      </div>
-    </div>
-  );
-};
+const categories = [
+  "Frontend",
+  "Styling",
+  "Backend",
+  "Database",
+  "Tools",
+  "Design",
+  "Version Control",
+  "Testing",
+];
 
 const Skills = () => {
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+
   return (
     <section className="pt-10">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 text-foreground">
-            Skills & Technologies
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Tech Stack</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise across different domains
+            Technologies and tools I work with to build modern, scalable applications
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {skillGroups.map((group, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ duration: 0.3, delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl"
-                   style={{ background: `linear-gradient(135deg, ${group.color.split(' ')[1]}, ${group.color.split(' ')[3]})` }} />
-              
-              <div className="relative bg-card/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-border/50 hover:border-border transition-all duration-300 h-full">
-                <div className="mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br mb-4 flex items-center justify-center"
-                       style={{ background: `linear-gradient(135deg, ${group.color.split(' ')[1]}, ${group.color.split(' ')[3]})` }}>
-                    <span className="text-white font-bold text-lg">{group.category.charAt(0)}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    {group.category}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {group.description}
-                  </p>
-                </div>
-                
-                <div className="space-y-1">
-                  {group.skills.map((skill, i) => (
-                    <SkillBar key={i} name={skill.name} level={skill.level} icon={skill.icon} />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Category List - Left Side */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:w-48 flex-shrink-0"
+          >
+            <div className="sticky top-32 space-y-2">
+              {categories.map((category) => {
+                const categoryTechs = techStack.filter((tech) => tech.category === category);
+                if (categoryTechs.length === 0) return null;
+
+                return (
+                  <button
+                    key={category}
+                    onMouseEnter={() => setHoveredCategory(category)}
+                    onMouseLeave={() => setHoveredCategory(null)}
+                    className="w-full text-left px-4 py-3 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary border border-transparent hover:border-primary/20"
+                  >
+                    <span className="font-semibold text-sm">{category}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* All Skills - Right Side */}
+          <div className="flex-1 min-h-[800px]">
+            <div className="flex flex-wrap gap-3">
+              {techStack.map((tech, idx) => {
+                const isHighlighted = hoveredCategory === tech.category;
+                const isDimmed = hoveredCategory !== null && hoveredCategory !== tech.category;
+
+                return (
+                  <motion.div
+                    key={tech.name}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.02 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className={`group transition-all duration-300 ${
+                      isHighlighted
+                        ? "opacity-100 scale-110 z-10"
+                        : isDimmed
+                        ? "opacity-30 scale-95"
+                        : "opacity-100"
+                    }`}
+                  >
+                    <div
+                      className={`
+                        ${tech.color}
+                        border rounded-lg p-3 flex flex-col items-center justify-center gap-2
+                        transition-all duration-300 cursor-default
+                        ${isHighlighted ? "shadow-xl border-opacity-100 ring-2 ring-primary/50" : "hover:shadow-lg hover:border-opacity-50"}
+                      `}
+                    >
+                      <div className="text-2xl">{tech.icon}</div>
+                      <span className="text-xs font-medium text-center leading-tight">
+                        {tech.name}
+                      </span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
