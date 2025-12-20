@@ -118,7 +118,7 @@ const Skills = () => {
 
   return (
     <section className="pt-10 pb-8 md:pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -177,7 +177,8 @@ const Skills = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+          <div className="max-h-[500px] sm:max-h-none overflow-y-auto sm:overflow-visible pr-2 sm:pr-0 pb-8 sm:pb-0">
+            <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3 md:gap-4 pb-16 sm:pb-0">
             {filteredTechStack.map((tech, idx) => (
               <motion.div
                 key={tech.name}
@@ -191,19 +192,20 @@ const Skills = () => {
                 <div
                   className={`
                     ${tech.color}
-                    border rounded-lg p-3 sm:p-4 flex flex-col items-center justify-center gap-2 sm:gap-3
+                    border rounded-lg p-2 sm:p-3 md:p-4 flex flex-col items-center justify-center gap-1.5 sm:gap-2 md:gap-3
                     transition-all duration-300 cursor-default
                     hover:shadow-lg hover:shadow-primary/10 hover:border-opacity-60
-                    min-h-[100px] sm:min-h-[110px]
+                    min-h-[140px] sm:min-h-[150px] md:min-h-[160px]
                   `}
                 >
-                  <div className="text-xl sm:text-2xl md:text-3xl">{tech.icon}</div>
-                  <span className="text-[10px] sm:text-xs font-medium text-center leading-tight line-clamp-2">
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl">{tech.icon}</div>
+                  <span className="text-[9px] sm:text-[10px] md:text-xs font-medium text-center leading-tight line-clamp-2">
                     {tech.name}
                   </span>
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
         </motion.div>
       </div>
