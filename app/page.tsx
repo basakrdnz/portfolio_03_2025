@@ -26,7 +26,7 @@ export default function Home() {
       <Navbar />
 
       {/* hero & about */}
-      <section className="min-h-screen flex items-center relative py-20">
+      <section className="min-h-screen flex items-center relative py-12 sm:py-16 lg:py-20">
         {/* Subtle background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-600/5"></div>
         
@@ -40,8 +40,8 @@ export default function Home() {
           }}
         />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* hero */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -72,7 +72,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl"
+                className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0"
               >
                 Crafting beautiful, functional web experiences with modern technologies and creative solutions.
               </motion.p>
@@ -104,9 +104,9 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-center lg:text-left space-y-6"
             >
-              <div className="inline-block">
+              <div className="inline-block mx-auto lg:mx-0">
                 <h2 className="text-3xl md:text-4xl font-bold mb-2">About Me</h2>
-                <div className="h-1 w-20 bg-gradient-to-r from-primary to-purple-600 rounded-full"></div>
+                <div className="h-1 w-20 bg-gradient-to-r from-primary to-purple-600 rounded-full mx-auto lg:mx-0"></div>
               </div>
               
               <div className="text-base md:text-lg text-muted-foreground space-y-4 leading-relaxed">
@@ -125,7 +125,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="pt-4"
+                className="pt-4 flex justify-center lg:justify-start"
               >
                 <Link
                   href="/projects"
@@ -141,8 +141,8 @@ export default function Home() {
       </section>
 
       {/* skills */}
-      <section className="py-20 bg-secondary">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-12 sm:py-16 lg:py-20 bg-secondary">
+        <div className="max-w-7xl mx-auto">
           <Skills />
         </div>
       </section>
@@ -150,17 +150,17 @@ export default function Home() {
 
 
       {/* contact */}
-      <section id="contact" className="py-20">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
-          <p className="text-lg mb-8 text-muted-foreground">
+      <section id="contact" className="py-16 sm:py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Get In Touch</h2>
+          <p className="text-base sm:text-lg mb-6 sm:mb-8 text-muted-foreground px-4">
             I'm currently looking for new opportunities. Whether you have a
             question or just want to say hi, I'll try my best to get back to
             you!
           </p>
           <a
             href="mailto:basak.karadeniz0@gmail.com"
-            className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+            className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity text-sm sm:text-base"
           >
             Say Hello!
           </a>
@@ -168,8 +168,8 @@ export default function Home() {
       </section>
 
       {/* footer */}
-      <footer className="py-8 border-t">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center text-sm text-muted-foreground">
+      <footer className="py-6 sm:py-8 border-t">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-muted-foreground">
           <p>Designed & Built with ❤️ using Next.js & Tailwind CSS</p>
         </div>
       </footer>

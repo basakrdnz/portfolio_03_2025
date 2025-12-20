@@ -98,6 +98,7 @@ const techStack: TechBadge[] = [
 ];
 
 const categories = [
+  "All",
   "Frontend",
   "Styling",
   "Backend",
@@ -109,92 +110,102 @@ const categories = [
 ];
 
 const Skills = () => {
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
+  const filteredTechStack = selectedCategory === "All" 
+    ? techStack 
+    : techStack.filter((tech) => tech.category === selectedCategory);
 
   return (
-    <section className="pt-10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="pt-10 pb-8 md:pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Tech Stack</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Tech Stack</h2>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Technologies and tools I work with to build modern, scalable applications
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Category List - Left Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:w-48 flex-shrink-0"
-          >
-            <div className="sticky top-32 space-y-2">
-              {categories.map((category) => {
-                const categoryTechs = techStack.filter((tech) => tech.category === category);
-                if (categoryTechs.length === 0) return null;
+        {/* Category Filter Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-8 md:mb-12"
+        >
+          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
+            {categories.map((category) => {
+              const categoryTechs = techStack.filter((tech) => tech.category === category);
+              const isActive = selectedCategory === category;
+              
+              if (category !== "All" && categoryTechs.length === 0) return null;
 
-                return (
-                  <button
-                    key={category}
-                    onMouseEnter={() => setHoveredCategory(category)}
-                    onMouseLeave={() => setHoveredCategory(null)}
-                    className="w-full text-left px-4 py-3 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary border border-transparent hover:border-primary/20"
-                  >
-                    <span className="font-semibold text-sm">{category}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </motion.div>
-
-          {/* All Skills - Right Side */}
-          <div className="flex-1 min-h-[800px]">
-            <div className="flex flex-wrap gap-3">
-              {techStack.map((tech, idx) => {
-                const isHighlighted = hoveredCategory === tech.category;
-                const isDimmed = hoveredCategory !== null && hoveredCategory !== tech.category;
-
-                return (
-                  <motion.div
-                    key={tech.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.02 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className={`group transition-all duration-300 ${
-                      isHighlighted
-                        ? "opacity-100 scale-110 z-10"
-                        : isDimmed
-                        ? "opacity-30 scale-95"
-                        : "opacity-100"
-                    }`}
-                  >
-                    <div
-                      className={`
-                        ${tech.color}
-                        border rounded-lg p-3 flex flex-col items-center justify-center gap-2
-                        transition-all duration-300 cursor-default
-                        ${isHighlighted ? "shadow-xl border-opacity-100 ring-2 ring-primary/50" : "hover:shadow-lg hover:border-opacity-50"}
-                      `}
-                    >
-                      <div className="text-2xl">{tech.icon}</div>
-                      <span className="text-xs font-medium text-center leading-tight">
-                        {tech.name}
-                      </span>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
+              return (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`
+                    px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm sm:text-base font-medium
+                    transition-all duration-300
+                    ${
+                      isActive
+                        ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                        : "bg-card/50 text-muted-foreground hover:bg-card hover:text-foreground border border-border/50"
+                    }
+                  `}
+                >
+                  {category}
+                  {category !== "All" && (
+                    <span className={`ml-2 text-xs ${isActive ? "opacity-80" : "opacity-60"}`}>
+                      ({categoryTechs.length})
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
-        </div>
+        </motion.div>
+
+        {/* Skills Grid */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+            {filteredTechStack.map((tech, idx) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.03 }}
+                whileHover={{ scale: 1.05, y: -4 }}
+                className="group"
+              >
+                <div
+                  className={`
+                    ${tech.color}
+                    border rounded-lg p-3 sm:p-4 flex flex-col items-center justify-center gap-2 sm:gap-3
+                    transition-all duration-300 cursor-default
+                    hover:shadow-lg hover:shadow-primary/10 hover:border-opacity-60
+                    min-h-[100px] sm:min-h-[110px]
+                  `}
+                >
+                  <div className="text-xl sm:text-2xl md:text-3xl">{tech.icon}</div>
+                  <span className="text-[10px] sm:text-xs font-medium text-center leading-tight line-clamp-2">
+                    {tech.name}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
