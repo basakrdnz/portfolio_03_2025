@@ -1,0 +1,259 @@
+﻿"use client";
+
+import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
+import Navbar from "@/components/Navbar";
+
+const projectDetails = [
+  {
+    id: 3,
+    title: "AI RERESUME",
+    techStack: ["React Router 7", "Puter", "Claude AI"],
+    projectUrl: "https://ai-reresume.vercel.app",
+    codeUrl: "https://github.com/basakrdnz/ai-reresume",
+    images: [
+      "/projectimg/reresumecv.png",
+      "/projectimg/reresumecv2.png"
+    ],
+    challenge: "Building a full-stack application without traditional backend infrastructure",
+    solution: "Leveraged Puter platform for file management, KV storage, and AI integration, allowing rapid development without server setup",
+    keyFeatures: [
+      "PDF CV upload and parsing",
+      "AI-powered feedback analysis using Claude",
+      "ATS compatibility scoring",
+      "Category-based evaluation system",
+      "PDF report generation client-side"
+    ],
+    learnings: [
+      "React Router 7's full-stack capabilities and server-side rendering",
+      "Puter platform for backend-as-a-service",
+      "Client-side PDF generation with jsPDF",
+      "State management with Zustand for complex workflows",
+      "AI integration patterns and prompt engineering"
+    ],
+    architecture: "Client-side heavy architecture with Puter handling file storage and AI API calls. Zustand manages application state, while React Router 7 handles routing and data loading."
+  },
+  {
+    id: 1,
+    title: "CRUMBLE KAFE WEBSITE",
+    techStack: ["React", "TypeScript", "Vite"],
+    projectUrl: "https://www.crumbleofficial.com",
+    codeUrl: "https://github.com/basakrdnz/crumble_web_react",
+    images: ["/projectimg/crumblecv.png"],
+    challenge: "Creating a modern, responsive website for a local business with multiple content sections and achieving top search rankings",
+    solution: "Built a performant React SPA with Vite for fast development and optimized builds. Implemented comprehensive SEO strategy including meta tags, structured data, keyword optimization, and performance tuning. Achieved 95+ Lighthouse score and top rankings for target keywords",
+    keyFeatures: [
+      "Responsive design across all devices",
+      "Menu categorization and display",
+      "Campaign sections with dynamic content",
+      "Instagram integration",
+      "Location and contact information",
+      "SEO optimization with meta tags and structured data",
+      "Keyword targeting for local search",
+      "Performance optimization (95+ Lighthouse score)"
+    ],
+    learnings: [
+      "Vite's build optimization and HMR",
+      "TypeScript in production React apps",
+      "Tailwind CSS utility-first approach",
+      "Component composition patterns",
+      "Performance optimization techniques",
+      "SEO best practices and implementation",
+      "Keyword research and optimization strategies",
+      "Structured data (Schema.org) markup",
+      "Meta tag optimization for search engines",
+      "Local SEO techniques for business visibility"
+    ],
+    architecture: "Single Page Application with component-based architecture. Vite handles bundling and optimization, while React manages component state and rendering. SEO implemented through meta tags, structured data, and semantic HTML structure."
+  },
+  {
+    id: 2,
+    title: "NOVA ESKRIM WEBSITE",
+    techStack: ["React", "Vite"],
+    projectUrl: "https://nova-eskrim-react.vercel.app",
+    codeUrl: "https://github.com/basakrdnz/nova_eskrim_react",
+    images: ["/projectimg/nova_web_img.png"],
+    challenge: "Building an information-rich website for a sports club with dynamic content and scheduling",
+    solution: "Developed a modular React application with reusable components for different content types. Focused on clean data structure and easy content management",
+    keyFeatures: [
+      "Club information and history",
+      "Training schedule management",
+      "Achievement showcase",
+      "Fencing rules and regulations",
+      "Live match tracking integration"
+    ],
+    learnings: [
+      "Component reusability and composition",
+      "Data structure design for content management",
+      "Responsive layout strategies",
+      "Performance considerations for content-heavy sites",
+      "Iterative development and feature addition"
+    ],
+    architecture: "Modular React application with component-based content sections. Designed for easy content updates and future feature expansion."
+  },
+];
+
+export default function ProjectsPage() {
+  return (
+    <main className="min-h-screen bg-background text-foreground">
+      <Navbar />
+
+      <section className="pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-16"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Projects</h1>
+            <p className="text-lg text-muted-foreground">
+              Real-world applications where I've applied modern web development practices, 
+              solved complex problems, and learned valuable lessons along the way.
+            </p>
+          </motion.div>
+
+          <div className="space-y-24">
+            {projectDetails.map((project, index) => (
+              <motion.article
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="space-y-8"
+              >
+                {/* Project Header */}
+                <div className="space-y-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h2 className="text-3xl md:text-4xl font-bold mb-2">{project.title}</h2>
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {project.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-0.5 bg-primary/10 text-primary rounded text-xs font-medium border border-primary/20"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex gap-3 flex-shrink-0">
+                      <a
+                        href={project.projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-card border border-border hover:bg-muted transition-colors"
+                        aria-label="View live demo"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                      <a
+                        href={project.codeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-card border border-border hover:bg-muted transition-colors"
+                        aria-label="View source code"
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project Images */}
+                <div className="space-y-4">
+                  {project.images.map((img, imgIndex) => (
+                    <div
+                      key={imgIndex}
+                      className="relative w-full h-auto rounded-lg overflow-hidden border border-border/50 bg-muted/30"
+                    >
+                      <img
+                        src={img}
+                        alt={`${project.title} screenshot ${imgIndex + 1}`}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Challenge & Solution */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-foreground">Challenge</h3>
+                    <p className="text-muted-foreground leading-relaxed">{project.challenge}</p>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-foreground">Solution</h3>
+                    <p className="text-muted-foreground leading-relaxed">{project.solution}</p>
+                  </div>
+                </div>
+
+                {/* Key Features */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-foreground">Key Features</h3>
+                  <ul className="space-y-2">
+                    {project.keyFeatures.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-muted-foreground">
+                        <span className="text-primary mt-1.5">ÔÇó</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Architecture */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-foreground">Architecture & Approach</h3>
+                  <p className="text-muted-foreground leading-relaxed">{project.architecture}</p>
+                </div>
+
+                {/* Learnings */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-foreground">Key Learnings</h3>
+                  <ul className="space-y-2">
+                    {project.learnings.map((learning, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-muted-foreground">
+                        <span className="text-primary mt-1.5">ÔåÆ</span>
+                        <span>{learning}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {index < projectDetails.length - 1 && (
+                  <div className="border-t border-border/50 pt-8" />
+                )}
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* contact */}
+      <section id="contact" className="py-20 bg-secondary">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
+          <p className="text-lg mb-8 text-muted-foreground">
+            I'm currently looking for new opportunities. Whether you have a
+            question or just want to say hi, I'll try my best to get back to
+            you!
+          </p>
+          <a
+            href="mailto:basak.karadeniz0@gmail.com"
+            className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+          >
+            Say Hello!
+          </a>
+        </div>
+      </section>
+
+      {/* footer */}
+      <footer className="py-8 border-t">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center text-sm text-muted-foreground">
+          <p>Designed & Built with ÔØñ´©Å using Next.js & Tailwind CSS</p>
+        </div>
+      </footer>
+    </main>
+  );
+}

@@ -5,173 +5,195 @@ import {
   Github,
   Linkedin,
   Mail,
-  Terminal,
-  BookOpen,
   ArrowRight,
+  Sparkles,
 } from "lucide-react";
 import Skills from "@/components/Skills";
-import FloatingImages from "@/components/FloatingImages";
 import Navbar from "@/components/Navbar";
 import { navLinks } from "@/data/navLinks";
 import Link from "next/link";
 
 export default function Home() {
-
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-hidden">
-
-
-      <FloatingImages />
+    <main className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
+      {/* Mesh Background */}
+      <div className="fixed inset-0 mesh-bg pointer-events-none" />
 
       <Navbar />
 
-      {/* hero & about */}
-      <section className="min-h-screen flex items-center relative py-12 sm:py-16 lg:py-20">
-        {/* Subtle background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-600/5"></div>
-        
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 bg-grid-pattern opacity-[0.02]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-            backgroundSize: "4rem 4rem",
-          }}
-        />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-            {/* hero */}
+      {/* Hero & About Section */}
+      <section className="min-h-screen flex items-center relative pt-24 pb-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Hero Content */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-center lg:text-left space-y-5"
+              transition={{ duration: 0.6 }}
+              className="text-left space-y-8"
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="inline-block px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium"
-              >
-                Front-end Developer
-              </motion.div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-                  Experimental
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-                  Developer
-                </span>
-              </h1>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0"
-              >
-                Crafting beautiful, functional web experiences with modern technologies and creative solutions.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-wrap gap-4 justify-center lg:justify-start pt-6"
-              >
-                {navLinks.map(({ href, Icon }, i) => (
-                  <a
-                    key={i}
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : "_self"}
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 hover:scale-110"
+              <div className="space-y-4">
+                <div className="overflow-hidden">
+                  <motion.div
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-500 shadow-sm"
                   >
-                    <Icon className="size-5" />
-                  </a>
-                ))}
-              </motion.div>
+                    <div className="w-8 h-px bg-slate-300" />
+                    <span className="text-[10px] font-black uppercase tracking-widest">Product-Driven Developer</span>
+                  </motion.div>
+                </div>
+
+                <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight">
+                  Product. Code.<br />
+                  <span className="text-slate-800">Test.</span>
+                </h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl"
+                >
+                  Building complete digital products; from Flutter apps and frontend architecture
+                  to rigorous software testing and idea development.
+                </motion.p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex flex-wrap gap-3">
+                  {navLinks.map(({ href, Icon }, i) => (
+                    <a
+                      key={i}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-violet-600 hover:border-violet-300 transition-all shadow-sm"
+                    >
+                      <Icon className="w-5 h-5" />
+                    </a>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    href="/projects"
+                    className="inline-flex items-center gap-3 px-10 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-all hover:-translate-y-0.5 shadow-xl shadow-slate-900/10"
+                  >
+                    Explore My Work
+                    <ArrowRight className="w-5 h-5 px-0" />
+                  </Link>
+                </div>
+              </div>
             </motion.div>
 
-            {/* about */}
+            {/* About Card - Simplified & Stable */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-center lg:text-left space-y-6"
+              transition={{ duration: 0.8 }}
             >
-              <div className="inline-block mx-auto lg:mx-0">
-                <h2 className="text-3xl md:text-4xl font-bold mb-2">About Me</h2>
-                <div className="h-1 w-20 bg-gradient-to-r from-primary to-purple-600 rounded-full mx-auto lg:mx-0"></div>
+              <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-200 shadow-xl relative overflow-hidden">
+                <div className="flex items-start gap-3 md:gap-4 mb-8">
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-1.5 h-12 md:h-16 bg-slate-900 rounded-full mt-1 origin-top"
+                  />
+                  <div className="overflow-hidden">
+                    <motion.h2
+                      initial={{ y: "100%" }}
+                      whileInView={{ y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                      className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none uppercase"
+                    >
+                      About Me<span className="text-slate-300">.</span>
+                    </motion.h2>
+                  </div>
+                </div>
+                <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
+                  <p>
+                    I'm a product-driven developer based in Ankara, focused on building complete digital products from concept to deployment.
+                  </p>
+                  <p>
+                    My expertise spans Flutter app development, modern frontend architecture with React and Next.js, and rigorous software testing.
+                    I don't just write code; I develop ideas into functional, tested products.
+                  </p>
+                  <p>
+                    Looking to collaborate on projects that value end-to-end ownership, clean architecture, and thoughtful product development.
+                  </p>
+                </div>
               </div>
-              
-              <div className="text-base md:text-lg text-muted-foreground space-y-4 leading-relaxed">
-                <p>
-                  I'm a front-end developer based in Ankara, passionate about creating modern, user-focused web interfaces. Currently working on strengthening my software testing skills while building scalable front-end solutions.
-                </p>
-                <p>
-                  I'm always learning new technologies and best practices. Whether it's advanced front-end patterns, testing methodologies, or UI/UX optimization, I'm eager to explore and apply what I learn.
-                </p>
-                <p>
-                  Looking to collaborate on projects that prioritize clean architecture and accessibility. Always open to discussing frontend development, CSS strategies, and efficient workflows.
-                </p>
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="pt-4 flex justify-center lg:justify-start"
-              >
-                <Link
-                  href="/projects"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
-                >
-                  View Projects
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* skills */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-secondary">
-        <div className="max-w-7xl mx-auto">
+      {/* Skills Section */}
+      <section className="py-24 bg-slate-50/50 border-y border-slate-100 relative">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Skills />
         </div>
       </section>
 
-
-
-      {/* contact */}
-      <section id="contact" className="py-16 sm:py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Get In Touch</h2>
-          <p className="text-base sm:text-lg mb-6 sm:mb-8 text-muted-foreground px-4">
-            I'm currently looking for new opportunities. Whether you have a
-            question or just want to say hi, I'll try my best to get back to
-            you!
-          </p>
-          <a
-            href="mailto:basak.karadeniz0@gmail.com"
-            className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity text-sm sm:text-base"
+      {/* Contact Section - Stable Dark Theme */}
+      <section id="contact" className="py-32 bg-slate-900 relative overflow-hidden text-left">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-16"
           >
-            Say Hello!
-          </a>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-slate-500">
+                <div className="w-12 h-px bg-slate-700" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Collaboration</span>
+              </div>
+
+              <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-16 md:h-24 bg-white rounded-full mt-2" />
+                  <h2 className="text-6xl md:text-8xl font-black text-white tracking-tight leading-none">
+                    CONTACT<span className="text-slate-400">.</span>
+                  </h2>
+                </div>
+
+                <p className="text-xl text-slate-400 max-w-xl leading-relaxed font-medium pb-1">
+                  I'm currently open to <span className="text-white">new opportunities</span> and
+                  interesting projects. Drop me a line and let's
+                  <span className="text-white"> discuss</span> how I can help.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="pt-8">
+            <a
+              href="mailto:basak.karadeniz0@gmail.com"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-slate-900 rounded-2xl font-black text-xl hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-2xl"
+            >
+              <Mail className="w-6 h-6" />
+              Send an Email
+            </a>
+          </div>
+        </div>
+
+        {/* Subtle Decorative Background */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-slate-500 rounded-full blur-[120px]" />
         </div>
       </section>
 
-      {/* footer */}
-      <footer className="py-6 sm:py-8 border-t">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-muted-foreground">
-          <p>Designed & Built with ❤️ using Next.js & Tailwind CSS</p>
-        </div>
+      {/* Footer */}
+      <footer className="py-12 bg-background border-t border-slate-100 text-center">
+        <p className="text-slate-500 text-sm">
+          © {new Date().getFullYear()} Designed & Built by Basak using Next.js & Tailwind CSS
+        </p>
       </footer>
     </main>
   );
