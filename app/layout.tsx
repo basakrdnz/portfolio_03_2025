@@ -12,25 +12,25 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Basak Karadeniz - Front-end Developer',
-    template: '%s | Basak Karadeniz',
+    default: 'Başak Karadeniz — Product-Driven Developer',
+    template: '%s | Başak Karadeniz',
   },
-  description: 'Front-end developer passionate about creating beautiful and functional web experiences.',
-  keywords: ['front-end developer', 'react', 'next.js', 'portfolio', 'web developer'],
-  authors: [{ name: 'Basak Karadeniz' }],
-  creator: 'Basak Karadeniz',
+  description: 'Flutter ve Web teknolojileriyle uçtan uca dijital ürünler geliştiren, test odaklı ve kullanıcı deneyimi merkezli software developer.',
+  keywords: ['basak karadeniz', 'product-driven developer', 'flutter', 'react', 'software testing', 'portfolio'],
+  authors: [{ name: 'Başak Karadeniz' }],
+  creator: 'Başak Karadeniz',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://basak.dev',
-    siteName: 'Basak Karadeniz Portfolio',
-    title: 'Basak Karadeniz - Front-end Developer',
-    description: 'Front-end developer passionate about creating beautiful and functional web experiences.',
+    siteName: 'Başak Karadeniz Portfolio',
+    title: 'Başak Karadeniz — Product-Driven Developer',
+    description: 'Flutter ve Web teknolojileriyle uçtan uca dijital ürünler geliştiren, test odaklı ve kullanıcı deneyimi merkezli software developer.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Basak Karadeniz - Front-end Developer',
-    description: 'Front-end developer passionate about creating beautiful and functional web experiences.',
+    title: 'Başak Karadeniz — Product-Driven Developer',
+    description: 'Flutter ve Web teknolojileriyle uçtan uca dijital ürünler geliştiren, test odaklı ve kullanıcı deneyimi merkezli software developer.',
   },
   robots: {
     index: true,

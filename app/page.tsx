@@ -40,7 +40,7 @@ export default function Home() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-500 shadow-sm"
                   >
-                    <div className="w-8 h-px bg-slate-300" />
+                    <Sparkles className="size-3 text-slate-400" />
                     <span className="text-[10px] font-black uppercase tracking-widest">Product-Driven Developer</span>
                   </motion.div>
                 </div>
