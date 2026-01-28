@@ -140,7 +140,7 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
                 {project.title}
               </h2>
               {project.status && (
-                <span className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-[10px] font-black uppercase tracking-widest border border-amber-400 shadow-sm animate-pulse">
+                <span className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-[11px] font-black uppercase tracking-widest border border-amber-400 shadow-sm animate-pulse">
                   {project.status}
                 </span>
               )}
@@ -164,7 +164,7 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
                 href={project.projectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-3 md:px-8 md:py-4 bg-slate-900 text-white rounded-xl md:rounded-2xl font-bold shadow-2xl hover:bg-slate-800 transition-all hover:-translate-y-1 text-[10px] md:text-base whitespace-nowrap"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-3 md:px-8 md:py-4 bg-slate-900 text-white rounded-xl md:rounded-2xl font-bold shadow-2xl hover:bg-slate-800 transition-all hover:-translate-y-1 text-[11px] md:text-base whitespace-nowrap"
               >
                 <ExternalLink className="w-3 h-3 md:w-5 md:h-5" />
                 Live Site
@@ -175,14 +175,14 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
                 href={project.codeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-3 md:px-8 md:py-4 bg-white text-slate-900 border-2 border-slate-200 rounded-xl md:rounded-2xl font-bold hover:bg-slate-50 hover:border-slate-900 transition-all hover:-translate-y-1 shadow-md text-[10px] md:text-base whitespace-nowrap"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-3 md:px-8 md:py-4 bg-white text-slate-900 border-2 border-slate-200 rounded-xl md:rounded-2xl font-bold hover:bg-slate-50 hover:border-slate-900 transition-all hover:-translate-y-1 shadow-md text-[11px] md:text-base whitespace-nowrap"
               >
                 <Github className="w-3 h-3 md:w-5 md:h-5" />
                 Source Code
               </a>
             )}
             {project.projectUrl === "#" && project.codeUrl === "#" && (
-              <div className="px-6 py-3 bg-slate-50 text-slate-400 rounded-xl font-bold border border-slate-400 flex items-center gap-2 cursor-default text-[10px] md:text-sm shadow-xl shadow-slate-200/60 hover:bg-white hover:text-slate-900 hover:border-slate-900 transition-all duration-300 group">
+              <div className="px-6 py-3 bg-slate-50 text-slate-400 rounded-xl font-bold border border-slate-400 flex items-center gap-2 cursor-default text-[11px] md:text-sm shadow-xl shadow-slate-200/60 hover:bg-white hover:text-slate-900 hover:border-slate-900 transition-all duration-300 group">
                 <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
                 In Development
               </div>
@@ -213,13 +213,13 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
           </div>
 
           {/* This part visible on mobile always - Now side by side on small screens too */}
-          <div className="grid grid-cols-2 gap-6 md:gap-10 pt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 pt-6">
             <section className="space-y-3">
               <h3 className="text-lg md:text-2xl font-bold text-slate-900 flex items-center gap-2 md:gap-3">
                 <div className="w-1 md:w-1.5 h-6 md:h-8 bg-slate-300 rounded-full" />
                 Challenge
               </h3>
-              <p className="text-slate-600 text-[10px] md:text-lg leading-relaxed">{project.challenge}</p>
+              <p className="text-slate-600 text-[11px] md:text-lg leading-relaxed">{project.challenge}</p>
             </section>
 
             {/* Always visible on both mobile and desktop */}
@@ -230,7 +230,7 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
               </h3>
               <div className="grid grid-cols-1 gap-2">
                 {project.learnings.map((learning: string, idx: number) => (
-                  <div key={idx} className="flex items-start gap-2 text-slate-500 text-[9px] md:text-sm font-semibold leading-tight">
+                  <div key={idx} className="flex items-start gap-2 text-slate-500 text-[10px] md:text-sm font-semibold leading-tight">
                     <span className="text-slate-300 mt-0.5">→</span>
                     {learning}
                   </div>
@@ -308,7 +308,7 @@ export default function ProjectsPage() {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-slate-400">
                 <div className="w-12 h-px bg-slate-200" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Work Gallery</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.3em]">Work Gallery</span>
               </div>
 
               <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
@@ -339,10 +339,9 @@ export default function ProjectsPage() {
                 </div>
 
                 <p className="text-xl text-slate-500 max-w-xl leading-relaxed font-medium pb-1">
-                  A curated collection of digital experiences, focusing on
-                  <span className="text-slate-900 font-bold"> performance</span>,
-                  <span className="text-slate-900 font-bold"> scalability</span>, and
-                  <span className="text-slate-900 font-bold"> user-centric design</span>.
+                  From initial <span className="text-slate-900 font-bold">concept</span> to rigorous testing; a collection of
+                  <span className="text-slate-900 font-bold"> complete digital products</span> built with a
+                  <span className="text-slate-900 font-bold"> product-driven mindset</span>.
                 </p>
               </div>
             </div>

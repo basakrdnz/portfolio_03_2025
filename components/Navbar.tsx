@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/types/navigation";
 
@@ -76,56 +77,70 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Drawer */}
-      {menuOpen && (
-        <>
-          <div
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[90] md:hidden"
-            onClick={() => setMenuOpen(false)}
-          />
-          <div className="fixed top-0 right-0 w-64 h-full bg-white shadow-2xl z-[100] flex flex-col">
-            <div className="p-6 flex flex-col h-full uppercase md:normal-case">
-              <div className="flex justify-between items-center mb-10">
-                <span className="text-xl font-bold text-slate-900 lowercase">basak.dev</span>
-                <button
-                  onClick={() => setMenuOpen(false)}
-                  className="p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
-                  aria-label="Close menu"
-                >
-                  <X className="size-5 text-slate-600" />
-                </button>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                {NAV_ITEMS.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[90] md:hidden"
+              onClick={() => setMenuOpen(false)}
+            />
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 w-72 h-full bg-white shadow-2xl z-[100] flex flex-col"
+            >
+              <div className="p-6 flex flex-col h-full uppercase md:normal-case">
+                <div className="flex justify-between items-center mb-10">
+                  <span className="text-xl font-bold text-slate-900 lowercase">basak.dev</span>
+                  <button
                     onClick={() => setMenuOpen(false)}
-                    className={cn(
-                      "px-5 py-4 rounded-2xl text-lg font-bold transition-all duration-300 flex items-center justify-between group text-left",
-                      pathname === item.href
-                        ? "bg-slate-900 text-white shadow-xl shadow-slate-900/20"
-                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                    )}
+                    className="p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+                    aria-label="Close menu"
                   >
-                    {item.label}
-                    {pathname === item.href && (
-                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                    )}
-                  </Link>
-                ))}
-              </div>
+                    <X className="size-5 text-slate-600" />
+                  </button>
+                </div>
 
-              {/* Brand at bottom */}
-              <div className="mt-auto pt-8 border-t border-slate-50">
-                <p className="text-[10px] font-medium text-slate-400 text-center tracking-widest lowercase">
-                  © {new Date().getFullYear()} basak.dev
-                </p>
+                <div className="flex flex-col gap-3">
+                  {NAV_ITEMS.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className={cn(
+                        "px-5 py-4 rounded-2xl text-lg font-bold transition-all duration-300 flex items-center justify-between group text-left",
+                        pathname === item.href
+                          ? "bg-slate-900 text-white shadow-xl shadow-slate-900/20"
+                          : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                      )}
+                    >
+                      {item.label}
+                      {pathname === item.href && (
+                        <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                      )}
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Brand at bottom */}
+                <div className="mt-auto pt-8 border-t border-slate-50">
+                  <p className="text-[11px] font-medium text-slate-400 text-center tracking-widest lowercase">
+                    © {new Date().getFullYear()} basak.dev
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
-        </>
-      )}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

@@ -15,9 +15,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
+    <main className="min-h-screen bg-background text-foreground">
       {/* Mesh Background */}
-      <div className="fixed inset-0 mesh-bg pointer-events-none" />
+      <div className="fixed inset-0 mesh-bg pointer-events-none z-0" />
 
       <Navbar />
 
@@ -41,7 +41,7 @@ export default function Home() {
                     className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-500 shadow-sm"
                   >
                     <Sparkles className="size-3 text-slate-400" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">Product-Driven Developer</span>
+                    <span className="text-[11px] font-black uppercase tracking-widest">Product-Driven Developer</span>
                   </motion.div>
                 </div>
 
@@ -54,15 +54,17 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl"
+                  className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-xl font-medium"
                 >
-                  Building complete digital products; from Flutter apps and frontend architecture
-                  to rigorous software testing and idea development.
+                  Building <span className="text-slate-900 font-bold">complete digital products</span>;
+                  from <span className="text-slate-900 font-bold">Flutter apps</span> and
+                  <span className="text-slate-900 font-bold"> frontend architecture</span> to
+                  <span className="text-slate-900 font-bold"> rigorous testing</span> and idea development.
                 </motion.p>
               </div>
 
               <div className="space-y-6">
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                   {navLinks.map(({ href, Icon }, i) => (
                     <a
                       key={i}
@@ -76,7 +78,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                   <Link
                     href="/projects"
                     className="inline-flex items-center gap-3 px-10 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-all hover:-translate-y-0.5 shadow-xl shadow-slate-900/10"
@@ -152,7 +154,7 @@ export default function Home() {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-slate-500">
                 <div className="w-12 h-px bg-slate-700" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Collaboration</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.3em]">Collaboration</span>
               </div>
 
               <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
@@ -172,7 +174,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="pt-8">
+          <div className="pt-8 flex justify-center md:justify-start">
             <a
               href="mailto:basak.karadeniz0@gmail.com"
               className="inline-flex items-center gap-3 px-10 py-5 bg-white text-slate-900 rounded-2xl font-black text-xl hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-2xl"
