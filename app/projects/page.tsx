@@ -97,7 +97,7 @@ const projectDetails = [
     id: 2,
     title: "NOVA ESKRIM WEBSITE",
     techStack: ["React", "Vite"],
-    projectUrl: "https://nova-eskrim-react.vercel.app",
+    projectUrl: "https://www.novaeskrim.com",
     codeUrl: "https://github.com/basakrdnz/nova_eskrim_react",
     images: ["/projectimg/nova_web_img.png"],
     challenge: "Building an information-rich website for a sports club with dynamic content and scheduling",
@@ -129,14 +129,14 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="max-w-6xl mx-auto"
+      className="w-full"
     >
       {/* 1. Project Header - Full Width Top */}
       <div className="space-y-6 mb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
                 {project.title}
               </h2>
               {project.status && (
@@ -331,7 +331,7 @@ export default function ProjectsPage() {
                         ease: [0.16, 1, 0.3, 1],
                         delay: 0.1
                       }}
-                      className="text-6xl md:text-8xl font-black text-slate-900 tracking-tight leading-none uppercase"
+                      className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-none uppercase"
                     >
                       PROJECTS<span className="text-slate-300">.</span>
                     </motion.h1>
@@ -382,7 +382,7 @@ export default function ProjectsPage() {
               <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
                 <div className="flex items-start gap-4">
                   <div className="w-2 h-16 md:h-24 bg-white rounded-full mt-2" />
-                  <h2 className="text-6xl md:text-8xl font-black text-white tracking-tight leading-none">
+                  <h2 className="text-5xl md:text-6xl font-black text-white tracking-tight leading-none">
                     CONTACT<span className="text-slate-400">.</span>
                   </h2>
                 </div>

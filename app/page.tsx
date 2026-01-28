@@ -45,7 +45,7 @@ export default function Home() {
                   </motion.div>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight">
+                <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.1] tracking-tight">
                   Product. Code.<br />
                   <span className="text-slate-800">Test.</span>
                 </h1>
@@ -111,7 +111,7 @@ export default function Home() {
                       whileInView={{ y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none uppercase"
+                      className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-none uppercase"
                     >
                       About Me<span className="text-slate-300">.</span>
                     </motion.h2>
@@ -160,7 +160,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
                 <div className="flex items-start gap-4">
                   <div className="w-2 h-16 md:h-24 bg-white rounded-full mt-2" />
-                  <h2 className="text-6xl md:text-8xl font-black text-white tracking-tight leading-none">
+                  <h2 className="text-5xl md:text-6xl font-black text-white tracking-tight leading-none">
                     CONTACT<span className="text-slate-400">.</span>
                   </h2>
                 </div>

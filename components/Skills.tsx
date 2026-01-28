@@ -40,7 +40,7 @@ const Skills = () => {
             <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
               <div className="flex items-start gap-4">
                 <div className="w-2 h-16 md:h-20 bg-slate-900 rounded-full mt-2" />
-                <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase">
+                <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none uppercase">
                   Skills<span className="text-slate-300">.</span>
                 </h2>
               </div>
