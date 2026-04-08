@@ -235,20 +235,20 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
               </div>
               <div className="flex flex-wrap gap-2 text-left">
                 {project.techStack.map((tech: string) => (
-                  <span key={tech} className="px-4 py-1.5 bg-white text-slate-600 rounded-full text-xs font-bold border border-slate-200 shadow-sm cursor-default hover:bg-slate-50 hover:border-slate-400 transition-colors">{tech}</span>
+                  <span key={tech} className="px-4 py-1.5 bg-white text-slate-600 rounded-full text-xs font-bold border border-slate-200 shadow-sm cursor-default hover:bg-slate-900 hover:text-white hover:border-slate-800 transition-all duration-300">{tech}</span>
                 ))}
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 md:gap-4">
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-4 w-full md:w-auto">
               {project.testFlightUrl && (
-                <a href={project.testFlightUrl} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-3 px-8 py-4 bg-slate-100 border border-slate-200 text-slate-900 rounded-2xl font-bold shadow-sm hover:bg-white hover:border-slate-900 transition-all hover:-translate-y-1 text-sm md:text-base whitespace-nowrap"><Zap className="w-5 h-5 fill-slate-900" />Try on TestFlight</a>
+                <a href={project.testFlightUrl} target="_blank" rel="noopener noreferrer" className="flex-1 md:flex-none inline-flex items-center justify-center gap-3 px-8 py-4 bg-orange-500 text-white rounded-2xl font-black shadow-xl shadow-orange-200 hover:bg-orange-600 transition-all hover:-translate-y-1 text-sm md:text-base whitespace-nowrap"><Zap className="w-5 h-5 fill-current" />Try on TestFlight</a>
               )}
               {project.projectUrl !== "#" && (
-                <a href={project.projectUrl} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-xl md:rounded-2xl font-bold hover:bg-slate-800 transition-all hover:-translate-y-1 text-sm md:text-base"><ExternalLink className="w-5 h-5" />Live Site</a>
+                <a href={project.projectUrl} target="_blank" rel="noopener noreferrer" className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-xl md:rounded-2xl font-bold hover:bg-slate-800 transition-all hover:-translate-y-1 text-sm md:text-base shadow-lg shadow-slate-900/20"><ExternalLink className="w-5 h-5" />Live Site</a>
               )}
               {project.codeUrl !== "#" && (
-                <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-900 border-2 border-slate-200 rounded-xl md:rounded-2xl font-bold hover:bg-slate-50 hover:border-slate-900 transition-all hover:-translate-y-1 shadow-md text-sm md:text-base"><Github className="w-5 h-5" />Source Code</a>
+                <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-900 border-2 border-slate-200 rounded-xl md:rounded-2xl font-bold hover:bg-slate-900 hover:text-white hover:border-slate-800 transition-all hover:-translate-y-1 shadow-md text-sm md:text-base"><Github className="w-5 h-5" />Source Code</a>
               )}
             </div>
           </div>
@@ -268,13 +268,13 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <section className="space-y-4">
+              <section className="space-y-4 text-left">
                 <h3 className="text-xl font-bold text-slate-900 flex items-center gap-3">
                   <div className="w-1.5 h-6 bg-slate-400 rounded-full" />Challenge
                 </h3>
                 <p className="text-slate-600 text-lg leading-relaxed">{project.challenge}</p>
               </section>
-              <section className="space-y-4">
+              <section className="space-y-4 text-left">
                 <h3 className="text-xl font-bold text-slate-900 flex items-center gap-3">
                   <div className="w-1.5 h-6 bg-slate-400 rounded-full" />Learnings
                 </h3>
@@ -291,7 +291,7 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
 
           <div className="lg:col-span-12 xl:col-span-5 space-y-12 h-full">
             <div className={`${isExpanded ? 'block' : 'hidden md:block'} space-y-12`}>
-               <section className="space-y-4">
+               <section className="space-y-4 text-left">
                  <h3 className="text-xl font-bold text-slate-900 flex items-center gap-3">
                    <div className="w-1.5 h-6 bg-slate-900 rounded-full" />The Solution
                  </h3>
@@ -299,14 +299,14 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
                </section>
 
                <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:border-slate-900 transition-all duration-300">
-                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3 text-left">
                    <div className="w-1.5 h-6 bg-slate-400 rounded-full" />Key Features
                  </h3>
-                 <ul className="space-y-4">
+                 <ul className="space-y-4 text-left">
                    {project.keyFeatures.map((feature: string, idx: number) => (
-                     <li key={idx} className="flex items-start gap-4 text-slate-600 font-medium">
+                     <li key={idx} className="flex items-start gap-4 text-slate-600 font-medium text-left">
                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0" />
-                       <span>{feature}</span>
+                       <span className="text-left">{feature}</span>
                      </li>
                    ))}
                  </ul>
@@ -317,9 +317,9 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
                    {/* Blueprint Grid Pattern */}
                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
                    
-                   <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                     <div className="space-y-1">
-                       <h3 className="text-sm font-black uppercase tracking-[0.3em] text-blue-100">Engineering Blueprints</h3>
+                   <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 text-left">
+                     <div className="space-y-1 text-left">
+                       <h3 className="text-sm font-black uppercase tracking-[0.3em] text-blue-100 text-left">Engineering Blueprints</h3>
                        <div className="flex items-center gap-2 text-[10px] text-blue-300/60 font-bold uppercase tracking-widest">
                          <Sparkles className="w-3 h-3" /> Technical Schematics
                        </div>
@@ -331,7 +331,7 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
                        <button
                          key={idx}
                          onClick={() => setSelectedImage({ url: diagram.url, label: diagram.label })}
-                         className="group flex items-center gap-5 p-4 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 rounded-2xl transition-all text-left"
+                         className="group flex items-center gap-5 p-4 bg-white/5 hover:bg-white/20 border border-white/5 hover:border-white/30 rounded-2xl transition-all text-left shadow-lg hover:shadow-white/5"
                        >
                          <div className="w-20 h-14 md:w-24 md:h-16 bg-slate-900/50 rounded-xl overflow-hidden border border-white/10 shrink-0 relative">
                            <img src={diagram.url} alt="" className="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
@@ -339,9 +339,9 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
                              <Maximize2 className="w-4 h-4 text-white" />
                            </div>
                          </div>
-                         <div className="flex-1">
-                           <p className="text-[11px] md:text-sm font-black uppercase tracking-widest text-white mb-1">{diagram.label}</p>
-                           <p className="text-[9px] font-bold text-blue-300/40 uppercase tracking-tighter">Click to inspect architecture</p>
+                         <div className="flex-1 text-left">
+                           <p className="text-[11px] md:text-sm font-black uppercase tracking-widest text-white mb-1 text-left">{diagram.label}</p>
+                           <p className="text-[9px] font-bold text-blue-300/40 uppercase tracking-tighter text-left">Click to inspect architecture</p>
                          </div>
                          <Maximize2 className="w-5 h-5 text-white/10 group-hover:text-white transition-colors hidden md:block" />
                        </button>
@@ -350,9 +350,9 @@ const ProjectCard = ({ project, index, isLast }: { project: any, index: number, 
                  </div>
                )}
 
-               <div className="pt-6 border-t border-slate-100">
-                 <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 italic">Architectural Insight</h3>
-                 <p className="text-slate-500 text-[11px] leading-relaxed italic">{project.architecture}</p>
+               <div className="pt-6 border-t border-slate-100 text-left">
+                 <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 italic text-left">Architectural Insight</h3>
+                 <p className="text-slate-500 text-[11px] leading-relaxed italic text-left">{project.architecture}</p>
                </div>
             </div>
 
@@ -391,7 +391,7 @@ export default function ProjectsPage() {
       </section>
 
       <section className="pb-32">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-8 text-left">
           {projectDetails.map((p, i) => (
             <ProjectCard key={p.id} project={p} index={i} isLast={i === projectDetails.length - 1} />
           ))}
@@ -400,10 +400,10 @@ export default function ProjectsPage() {
 
       <section id="contact" className="py-32 bg-slate-900 text-left">
         <div className="max-w-7xl mx-auto px-8 relative overflow-hidden">
-          <div className="space-y-12 relative z-10">
-            <div className="flex items-start gap-4">
+          <div className="space-y-12 relative z-10 text-left">
+            <div className="flex items-start gap-4 text-left">
               <div className="w-2 h-24 bg-white rounded-full mt-2" />
-              <h2 className="text-6xl font-black text-white">Contact<span className="text-slate-400">.</span></h2>
+              <h2 className="text-6xl font-black text-white text-left">Contact<span className="text-slate-400">.</span></h2>
             </div>
             <a href="mailto:basak.karadeniz0@gmail.com" className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black rounded-2xl font-black text-2xl hover:bg-slate-50 transition-all hover:-translate-y-1">
               <Mail className="w-6 h-6" /> Send Email

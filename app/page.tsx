@@ -38,9 +38,9 @@ export default function Home() {
                     initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-500 shadow-sm"
+                    className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-500 shadow-sm hover:bg-slate-900 hover:text-white hover:border-slate-800 transition-all duration-300 cursor-default group"
                   >
-                    <Sparkles className="size-3 text-slate-400" />
+                    <Sparkles className="size-3 text-slate-400 group-hover:text-white transition-colors" />
                     <span className="text-[11px] font-black uppercase tracking-widest">Product-Driven Developer</span>
                   </motion.div>
                 </div>
@@ -71,7 +71,7 @@ export default function Home() {
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-violet-600 hover:border-violet-300 transition-all shadow-sm"
+                      className="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-900 hover:text-white hover:border-slate-800 transition-all shadow-sm"
                     >
                       <Icon className="w-5 h-5" />
                     </a>
@@ -81,7 +81,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                   <Link
                     href="/projects"
-                    className="inline-flex items-center gap-3 px-10 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-all hover:-translate-y-0.5 shadow-xl shadow-slate-900/10"
+                    className="inline-flex items-center gap-3 px-10 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-white hover:text-slate-900 border border-slate-900 transition-all hover:-translate-y-0.5 shadow-xl shadow-slate-900/10"
                   >
                     Explore My Work
                     <ArrowRight className="w-5 h-5 px-0" />
@@ -96,14 +96,14 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-200 shadow-xl relative overflow-hidden">
+              <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-200 shadow-xl relative overflow-hidden hover:bg-slate-900 hover:border-slate-800 transition-all duration-500 cursor-default group">
                 <div className="flex items-start gap-3 md:gap-4 mb-8">
                   <motion.div
                     initial={{ scaleY: 0 }}
                     whileInView={{ scaleY: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-1.5 h-12 md:h-16 bg-slate-900 rounded-full mt-1 origin-top"
+                    className="w-1.5 h-12 md:h-16 bg-slate-900 group-hover:bg-white rounded-full mt-1 origin-top transition-colors"
                   />
                   <div className="overflow-hidden">
                     <motion.h2
@@ -111,13 +111,13 @@ export default function Home() {
                       whileInView={{ y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-none uppercase"
+                      className="text-3xl md:text-4xl font-black text-slate-900 group-hover:text-white tracking-tight leading-none uppercase transition-colors"
                     >
-                      About Me<span className="text-slate-300">.</span>
+                      About Me<span className="text-slate-300 group-hover:text-slate-600">.</span>
                     </motion.h2>
                   </div>
                 </div>
-                <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
+                <div className="space-y-4 text-slate-600 group-hover:text-slate-300 text-lg leading-relaxed transition-colors">
                   <p>
                     I'm a product-driven developer based in Ankara, focused on building complete digital products from concept to deployment.
                   </p>
